@@ -1,3 +1,5 @@
+#------------Recursion-----------------------------
+
 def BinarySearch(arr,left,right,target):
     if right>=left:
         mid=(left+right)//2
@@ -11,3 +13,69 @@ def BinarySearch(arr,left,right,target):
         return -1
 arr=[-1,0,1,2,3,4,7,9,10,20]
 print(BinarySearch(arr,0,len(arr)-1,10))
+
+#---------------------Loop---------------------------
+#AS
+
+def BinarySearch(arr,target):
+    start,end=0,len(arr)-1
+    while(start<=end):
+        mid=(start+end)//2
+        if arr[mid]==target:
+            return mid
+        '''
+        DS order
+        if target<arr[mid]:
+            start=mid+1
+        else:
+            end=mid-1
+        '''
+        if target<arr[mid]:
+            end=mid-1
+        else:
+            start=mid+1
+        
+print(BinarySearch(arr,634))
+
+#--------------------- Agnostic Binary Search----------------
+
+arr1=[99,88,77,66,55,44,33,22,15,11,2,1,-1,-39]
+arr=[1,2,3,4,5,6,7,8,9,10,12,23,45,67,78,89]
+
+def BinarySearch(arr,target):
+    start,end=0,len(arr)-1
+    booleanVal=arr[0]<arr[len(arr)-1]
+    
+    while(start<=end):
+        mid=(start+end)//2
+        if arr[mid]==target:
+            return mid
+        if booleanVal:
+            if target<arr[mid]:
+                end=mid-1
+            else:
+                start=mid+1
+        else:
+            if target<arr[mid]:
+                start=mid+1
+            else:
+                end=mid-1
+    return -1
+print(BinarySearch(arr1,1))
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+     
+ 
